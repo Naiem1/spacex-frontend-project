@@ -1,4 +1,4 @@
-const AppRouter: React.FC = (props) => {
+const AppRouter: React.FC = () => {
   return <div>AppRouter</div>;
 };
 
