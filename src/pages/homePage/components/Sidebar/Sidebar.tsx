@@ -1,5 +1,7 @@
 import { Divider, Layout, Radio, RadioChangeEvent, Typography } from 'antd';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { addFilterValue } from '../../../../store/filterSlice';
 
 const { Title } = Typography;
 
@@ -12,16 +14,22 @@ const menuData: string[] = [
   'Last Year',
   'Failure',
   'Success',
-  'Up Coming Launch',
+  'Upcoming',
 ];
 
 const Sidebar: React.FC = () => {
   const [value, setValue] = useState<string>('all');
+  const dispatch = useDispatch();
 
   const onChangeRadio = (e: RadioChangeEvent) => {
-    // console.log('radio checked', e.target.value);
     setValue(e.target.value);
   };
+
+  useEffect(() => {
+    dispatch(addFilterValue(value));
+    console.log('rendering...', value);
+    
+  }, [value]);
 
   return (
     <Sider
@@ -32,7 +40,7 @@ const Sidebar: React.FC = () => {
         left: 0,
         top: 0,
         bottom: 0,
-        background: '#8D8078',
+        background: '#24160f',
         color: '#FFFF',
         padding: '15px 25px 0',
       }}
@@ -52,10 +60,12 @@ const Sidebar: React.FC = () => {
 
       <Radio.Group size="large" onChange={onChangeRadio} value={value}>
         {menuData.map((val, i) => (
-          <div key={val}>
-            {i && <Divider />}
-            <Radio value={val}>{val}</Radio>
-          </div>
+          <Title level={5} key={val}>
+            {i && <Divider style={{ background: '#353434' }} />}
+            <Radio style={{ color: '#FFF' }} value={val}>
+              {val}
+            </Radio>
+          </Title>
         ))}
       </Radio.Group>
     </Sider>
