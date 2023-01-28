@@ -6,7 +6,7 @@ export const spacexApi = createApi({
     baseUrl: 'https://api.spacexdata.com/v3/',
   }),
   endpoints: (builder) => ({
-    launches: builder.query({
+    launches: builder.query<any, void>({
       query: () => '/launches',
     }),
     launch: builder.query({

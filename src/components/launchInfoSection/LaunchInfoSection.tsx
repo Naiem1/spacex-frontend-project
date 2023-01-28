@@ -5,34 +5,35 @@ import SingleLaunchInfo from '../SingleLaunchInfo/SingleLaunchInfo';
 
 const LaunchInfoSection: React.FC = () => {
   const { data, isLoading } = useLaunchesQuery();
-  const searchValue = useSelector((state) => state.searchValue);
+  const searchValue = useSelector((state: any) => state.searchValue);
 
-  const radioValue = useSelector((state) => state.filterValue);
+  const radioValue = useSelector((state: any) => state.filterValue);
 
   let launchData = data;
 
   if (radioValue.value === 'Success') {
-    launchData = data?.filter((data) => data.launch_success);
+    launchData = data?.filter((data: any) => data.launch_success);
   }
 
   if (radioValue.value === 'Failure') {
-    launchData = data?.filter((data) => !data.launch_success);
+    launchData = data?.filter((data: any) => !data.launch_success);
   }
 
   if (radioValue.value === 'Upcoming') {
-    launchData = data?.filter((data) => data.upcoming);
+    launchData = data?.filter((data: any) => data.upcoming);
   }
 
   const lastYear = (new Date().getFullYear() - 1).toString();
 
   if (radioValue.value === 'Last Year') {
-    launchData = data?.filter((data) => data.launch_year === lastYear);
+    launchData = data?.filter((data: any) => data.launch_year === lastYear);
   }
 
   if (searchValue.value) {
     launchData = data?.filter(
-      (data) =>
-        data.rocket.rocket_name.toLowerCase() === searchValue.value.toLowerCase()
+      (data: any) =>
+        data.rocket.rocket_name.toLowerCase() ===
+        searchValue.value.toLowerCase()
     );
   }
 
@@ -55,9 +56,9 @@ const LaunchInfoSection: React.FC = () => {
   return (
     <div style={{ width: '95%', margin: '50px auto' }}>
       <Row gutter={[8, 8]} justify="center">
-        {launchData?.map((launch) => (
+        {launchData?.map((launch: any) => (
           <SingleLaunchInfo
-            key={launch?.launch_date_unix + launch.flight_number}
+            key={launch.launch_date_unix + launch.flight_number}
             launch={launch}
           />
         ))}

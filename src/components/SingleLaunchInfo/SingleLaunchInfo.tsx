@@ -8,6 +8,10 @@ interface SingleLaunchInfoProps {
     mission_name: string;
     launch_year: string;
     launch_date_local: string;
+    links: {
+      mission_patch: string;
+      flickr_images: string;
+    };
   };
 }
 
@@ -18,7 +22,7 @@ const SingleLaunchInfo: React.FC<SingleLaunchInfoProps> = ({ launch }) => {
     launch_year: launchYear,
     launch_date_local,
   } = launch;
-  const { mission_patch, flickr_images } = launch?.links;
+  const { mission_patch, flickr_images } = launch.links;
 
   const { month, year } = dateFormatter(launch_date_local);
 

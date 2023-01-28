@@ -5,7 +5,6 @@ import { addSearchValue } from '../../store/searchSlice';
 const { Search } = Input;
 const SearchBar = () => {
   const dispatch = useDispatch();
-  const state = useSelector(state => state.searchValue);
   
   const onSearch = (value: string) => {
     dispatch(addSearchValue(value));

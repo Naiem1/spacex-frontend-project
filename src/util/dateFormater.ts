@@ -1,7 +1,5 @@
-export const dateFormatter = (
-  myDate: string
-): { day: string; month: string; monthCount: string; year: string } => {
-  const dateString = new Date(myDate).toDateString();
+export const dateFormatter = (myDate: string) => {
+  const dateString: string = new Date(myDate).toDateString();
   const [day, month, date, year] = dateString.split(' ');
 
   return {
