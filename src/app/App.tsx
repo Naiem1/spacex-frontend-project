@@ -1,9 +1,9 @@
-import HomePage from '../pages/homePage/HomePage';
+import AppRouter from '../routers/AppRouter';
 
 const App: React.FC = () => {
   return (
     <div>
-      <HomePage />
+      <AppRouter />
     </div>
   );
 };
