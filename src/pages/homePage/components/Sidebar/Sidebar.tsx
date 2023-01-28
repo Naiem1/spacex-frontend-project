@@ -1,7 +1,7 @@
 import { Divider, Layout, Radio, RadioChangeEvent, Typography } from 'antd';
 import { useState } from 'react';
 
-const { Title, Paragraph } = Typography;
+const { Title } = Typography;
 
 const { Sider } = Layout;
 
@@ -19,7 +19,7 @@ const Sidebar: React.FC = () => {
   const [value, setValue] = useState<string>('all');
 
   const onChangeRadio = (e: RadioChangeEvent) => {
-    console.log('radio checked', e.target.value);
+    // console.log('radio checked', e.target.value);
     setValue(e.target.value);
   };
 
@@ -50,7 +50,7 @@ const Sidebar: React.FC = () => {
 
       <div style={{ marginTop: '50px' }} />
 
-      <Radio.Group size='large' onChange={onChangeRadio} value={value}>
+      <Radio.Group size="large" onChange={onChangeRadio} value={value}>
         {menuData.map((val, i) => (
           <div key={val}>
             {i && <Divider />}
