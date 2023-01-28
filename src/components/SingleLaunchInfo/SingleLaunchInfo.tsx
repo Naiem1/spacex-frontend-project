@@ -1,8 +1,10 @@
 import { Button, Card, Col, Typography } from 'antd';
+import { useNavigate } from 'react-router-dom';
+import { dateFormatter } from '../../util/dateFormater';
 
 interface SingleLaunchInfoProps {
   launch: {
-    mission_id: number;
+    flight_number: number;
     mission_name: string;
     launch_year: string;
     launch_date_local: string;
@@ -11,17 +13,20 @@ interface SingleLaunchInfoProps {
 
 const SingleLaunchInfo: React.FC<SingleLaunchInfoProps> = ({ launch }) => {
   const {
-    mission_id,
+    flight_number,
     mission_name: missionName,
     launch_year: launchYear,
     launch_date_local,
   } = launch;
   const { mission_patch, flickr_images } = launch?.links;
 
-  const date = new Date(launch_date_local).toDateString();
-  const [day, month, _monthCount, year] = date.split(' ');
+  const { month, year } = dateFormatter(launch_date_local);
 
-  console.log(day, month, year);
+  const navigate = useNavigate();
+
+  const handleClick = (flightId: number) => {
+    navigate(`/launches/${flightId}`);
+  };
 
   return (
     <Col xs={16} sm={16} md={8} lg={8} xl={6}>
@@ -43,7 +48,7 @@ const SingleLaunchInfo: React.FC<SingleLaunchInfoProps> = ({ launch }) => {
           </Typography.Title>
         </div>
         <Typography.Title level={4}>{missionName}</Typography.Title>
-        <Button>View Details</Button>
+        <Button onClick={() => handleClick(flight_number)}>View Details</Button>
       </Card>
     </Col>
   );

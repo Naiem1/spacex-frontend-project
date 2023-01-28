@@ -9,7 +9,10 @@ export const spacexApi = createApi({
     launches: builder.query({
       query: () => '/launches',
     }),
+    launch: builder.query({
+      query: (id) => `/launches/${id}`,
+    }),
   }),
 });
 
-export const { useLaunchesQuery } = spacexApi;
+export const { useLaunchesQuery, useLaunchQuery } = spacexApi;
