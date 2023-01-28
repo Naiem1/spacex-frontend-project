@@ -1,7 +1,8 @@
 import { Layout, theme } from 'antd';
-import { Content } from 'antd/es/layout/layout';
-import Sider from 'antd/es/layout/Sider';
 import HeroSection from './components/heroSection/HeroSection';
+import Sidebar from './components/Sidebar/Sidebar';
+
+const { Content } = Layout;
 
 const HomePage: React.FC = () => {
   const {
@@ -10,14 +11,10 @@ const HomePage: React.FC = () => {
 
   return (
     <Layout hasSider>
-      <Sider>Sider</Sider>
+      <Sidebar />
       <Layout className="site-layout">
-        <Content style={{ overflow: 'initial' }}>
-          <div
-            style={{
-              textAlign: 'center',
-            }}
-          >
+        <Content style={{ overflow: 'initial', marginLeft: '200px' }}>
+          <div style={{ textAlign: 'center' }}>
             <HeroSection />
           </div>
         </Content>
