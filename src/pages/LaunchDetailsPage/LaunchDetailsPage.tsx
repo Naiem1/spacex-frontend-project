@@ -43,12 +43,12 @@ const LaunchDetailsPage: React.FC = () => {
             objectFit: 'fill',
             height: '60vh',
           }}
-          src={flickr_images[0]}
+          src={flickr_images.length > 0 ? flickr_images[0] : mission_patch}
           alt="img"
         />
       </div>
 
-      <Row justify='space-between'>
+      <Row justify="space-between">
         <Col span={16}>
           <Title level={5} style={{ color: '#FFFF' }}>
             {month} {date}, {year}

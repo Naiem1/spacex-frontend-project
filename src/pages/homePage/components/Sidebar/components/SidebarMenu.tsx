@@ -13,7 +13,6 @@ type SidebarMenuProps = {
 
 const SidebarMenu: React.FC<SidebarMenuProps> = (props) => {
   const { item } = props;
-  console.log(item);
 
   return (
     <div style={{ display: 'flex', alignItems: 'center' }}>
